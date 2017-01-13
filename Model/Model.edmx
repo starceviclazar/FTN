@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FTNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="LOCATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LAT" Type="float" Nullable="false" />
+          <Property Name="LNG" Type="float" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEASUREMENT">
+          <Key>
+            <PropertyRef Name="MEASUREMENT_ID" />
+          </Key>
+          <Property Name="MEASUREMENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RTU_ID" Type="int" Nullable="false" />
+          <Property Name="MEASUREMENT_VALUE" Type="float" Nullable="false" />
+          <Property Name="MEASUREMENT_TIME" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="MEASUREMENT_TYPE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RTU">
+          <Key>
+            <PropertyRef Name="RTU_ID" />
+          </Key>
+          <Property Name="RTU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOCATION_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MEASUREM_RTU_TO_ME_RTU">
+          <End Role="RTU" Type="Self.RTU" Multiplicity="1" />
+          <End Role="MEASUREMENT" Type="Self.MEASUREMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RTU">
+              <PropertyRef Name="RTU_ID" />
+            </Principal>
+            <Dependent Role="MEASUREMENT">
+              <PropertyRef Name="RTU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RTU_RTU_TO_LO_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+          <End Role="RTU" Type="Self.RTU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="LOCATION_ID" />
+            </Principal>
+            <Dependent Role="RTU">
+              <PropertyRef Name="LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FTNModelStoreContainer">
+          <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEASUREMENT" EntityType="Self.MEASUREMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RTU" EntityType="Self.RTU" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MEASUREM_RTU_TO_ME_RTU" Association="Self.FK_MEASUREM_RTU_TO_ME_RTU">
+            <End Role="RTU" EntitySet="RTU" />
+            <End Role="MEASUREMENT" EntitySet="MEASUREMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RTU_RTU_TO_LO_LOCATION" Association="Self.FK_RTU_RTU_TO_LO_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="RTU" EntitySet="RTU" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FTNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="LOCATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LAT" Type="Double" Nullable="false" />
+          <Property Name="LNG" Type="Double" Nullable="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RTUs" Relationship="Self.FK_RTU_RTU_TO_LO_LOCATION" FromRole="LOCATION" ToRole="RTU" />
+        </EntityType>
+        <EntityType Name="MEASUREMENT">
+          <Key>
+            <PropertyRef Name="MEASUREMENT_ID" />
+          </Key>
+          <Property Name="MEASUREMENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RTU_ID" Type="Int32" Nullable="false" />
+          <Property Name="MEASUREMENT_VALUE" Type="Double" Nullable="false" />
+          <Property Name="MEASUREMENT_TIME" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="MEASUREMENT_TYPE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RTU" Relationship="Self.FK_MEASUREM_RTU_TO_ME_RTU" FromRole="MEASUREMENT" ToRole="RTU" />
+        </EntityType>
+        <EntityType Name="RTU">
+          <Key>
+            <PropertyRef Name="RTU_ID" />
+          </Key>
+          <Property Name="RTU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LOCATION" Relationship="Self.FK_RTU_RTU_TO_LO_LOCATION" FromRole="RTU" ToRole="LOCATION" />
+          <NavigationProperty Name="MEASUREMENTs" Relationship="Self.FK_MEASUREM_RTU_TO_ME_RTU" FromRole="RTU" ToRole="MEASUREMENT" />
+        </EntityType>
+        <Association Name="FK_RTU_RTU_TO_LO_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+          <End Role="RTU" Type="Self.RTU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="LOCATION_ID" />
+            </Principal>
+            <Dependent Role="RTU">
+              <PropertyRef Name="LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEASUREM_RTU_TO_ME_RTU">
+          <End Role="RTU" Type="Self.RTU" Multiplicity="1" />
+          <End Role="MEASUREMENT" Type="Self.MEASUREMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RTU">
+              <PropertyRef Name="RTU_ID" />
+            </Principal>
+            <Dependent Role="MEASUREMENT">
+              <PropertyRef Name="RTU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FTNEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
+          <EntitySet Name="MEASUREMENTs" EntityType="Self.MEASUREMENT" />
+          <EntitySet Name="RTUs" EntityType="Self.RTU" />
+          <AssociationSet Name="FK_RTU_RTU_TO_LO_LOCATION" Association="Self.FK_RTU_RTU_TO_LO_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATIONs" />
+            <End Role="RTU" EntitySet="RTUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEASUREM_RTU_TO_ME_RTU" Association="Self.FK_MEASUREM_RTU_TO_ME_RTU">
+            <End Role="RTU" EntitySet="RTUs" />
+            <End Role="MEASUREMENT" EntitySet="MEASUREMENTs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FTNModelStoreContainer" CdmEntityContainer="FTNEntities">
+          <EntitySetMapping Name="LOCATIONs">
+            <EntityTypeMapping TypeName="FTNModel.LOCATION">
+              <MappingFragment StoreEntitySet="LOCATION">
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="LNG" ColumnName="LNG" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEASUREMENTs">
+            <EntityTypeMapping TypeName="FTNModel.MEASUREMENT">
+              <MappingFragment StoreEntitySet="MEASUREMENT">
+                <ScalarProperty Name="MEASUREMENT_ID" ColumnName="MEASUREMENT_ID" />
+                <ScalarProperty Name="RTU_ID" ColumnName="RTU_ID" />
+                <ScalarProperty Name="MEASUREMENT_VALUE" ColumnName="MEASUREMENT_VALUE" />
+                <ScalarProperty Name="MEASUREMENT_TIME" ColumnName="MEASUREMENT_TIME" />
+                <ScalarProperty Name="MEASUREMENT_TYPE" ColumnName="MEASUREMENT_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RTUs">
+            <EntityTypeMapping TypeName="FTNModel.RTU">
+              <MappingFragment StoreEntitySet="RTU">
+                <ScalarProperty Name="RTU_ID" ColumnName="RTU_ID" />
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
