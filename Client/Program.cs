@@ -9,7 +9,7 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            var callback = new Callback();
+            /*var callback = new Callback();
             var instance = new InstanceContext(callback);
             WcfService.ServiceWithCBClient proxy = new WcfService.ServiceWithCBClient(instance);
 
@@ -22,7 +22,7 @@ namespace Client
             Console.WriteLine("Press any key to stop client...");
             Console.ReadKey();
 
-       
+       */
 
         }
     }

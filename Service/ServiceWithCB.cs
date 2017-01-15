@@ -32,6 +32,19 @@ namespace Service
 
 			db.MEASUREMENTs.Add(m);
 			db.SaveChanges();
+
+			NotifyClients(m);
+		}
+
+		private void NotifyClients(MEASUREMENT measurement)
+		{
+			foreach(Subscriber subscriber in subscribers)
+			{
+				if(subscriber.Rtus.Contains(measurement.RTU_ID))
+				{
+					subscriber.Callback.OnCallback(measurement.RTU_ID, measurement.MEASUREMENT_VALUE, measurement.MEASUREMENT_TIME, measurement.MEASUREMENT_TYPE);
+				}
+			}
 		}
 
 		public void Subscribe(int clientId, int rtuId)

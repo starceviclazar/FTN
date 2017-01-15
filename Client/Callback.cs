@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Client
 {
-    class Callback:WcfService.IServiceWithCBCallback
-    {
-        public void OnCallback(string id, double value)
-        {
-			Console.WriteLine(string.Format("ID: {0} - {1}", id, value));
-        }
-    }
+	public class Callback : WcfService.IServiceWithCBCallback
+	{
+		public void OnCallback(int id, double value, DateTime date, int type)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

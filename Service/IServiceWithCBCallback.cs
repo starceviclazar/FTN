@@ -9,6 +9,6 @@ namespace Service
     interface IServiceWithCBCallback
     {
         [OperationContract]
-        void OnCallback(string id, double value);
+        void OnCallback(int id, double value, DateTime date, int type);
     }
 }
