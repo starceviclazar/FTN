@@ -11,6 +11,9 @@ namespace Service
     public interface IServiceWithCB
     {
         [OperationContract]
-        string Start();
+        void Subscribe(int clientId, int rtuId);
+
+		[OperationContract]
+		void Unsubscribe(int clientId, int rtuId);
     }
 }
