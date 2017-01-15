@@ -10,18 +10,15 @@ using System.Timers;
 namespace Service
 {
 	[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant, InstanceContextMode = InstanceContextMode.Single)]
-    public class ServiceWithCB : IServiceWithCB, IMeasure
-    {
-        private IServiceWithCBCallback callback;
+	public class ServiceWithCB : IServiceWithCB, IMeasure
+	{
+		private List<Subscriber> subscribers = new List<Subscriber>();
 		private Dictionary<string, double> measurements = new Dictionary<string, double>();
-        
-        public string Start()
-        {
-            //inicijalizacija
-			callback = OperationContext.Current.GetCallbackChannel<IServiceWithCBCallback>();
-  
-            return "Service started.";
-        }
+
+		public string Start()
+		{
+			return "Service started.";
+		}
 
 		public void Measure(int rtuId, double value, DateTime time, int type)
 		{
@@ -35,11 +32,44 @@ namespace Service
 
 			db.MEASUREMENTs.Add(m);
 			db.SaveChanges();
+		}
 
-			if (callback != null)
+		public void Subscribe(int clientId, int rtuId)
+		{
+			Subscriber subscriber = null;
+
+			subscriber = subscribers.Find(s => s.ClientId == clientId);
+
+			if(subscribers == null)
 			{
-				callback.OnCallback("1", value);
+				subscriber = new Subscriber(clientId,
+					OperationContext.Current.GetCallbackChannel<IServiceWithCBCallback>(),
+					new List<int> {rtuId }
+					);
+
+				return;
 			}
+
+			if(subscriber.Rtus.Contains(rtuId))
+			{
+				return;
+			}
+
+			subscriber.Rtus.Add(rtuId);
+		}
+
+		public void Unsubscribe(int clientId, int rtuId)
+		{
+			Subscriber subscriber = null;
+
+			subscriber = subscribers.Find(s => s.ClientId == clientId);
+
+			if(subscriber == null)
+			{
+				return;
+			}
+
+			subscriber.Rtus.Remove(rtuId);
 		}
 	}
 }

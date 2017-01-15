@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-	public class Subscriber
+	class Subscriber
 	{
 		private int clientId;
 		private IServiceWithCBCallback callback;
@@ -18,7 +18,7 @@ namespace Service
 			this.rtus = rtus;
 		}
 
-		public  IServiceWithCBCallback Callback
+		public IServiceWithCBCallback Callback
 		{
 			get { return callback; }
 			set { callback = value; }
