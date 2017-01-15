@@ -10,7 +10,7 @@ using System.Timers;
 namespace Service
 {
 	[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant, InstanceContextMode = InstanceContextMode.Single)]
-	public class ServiceWithCB : IServiceWithCB, IMeasure
+	public class ServiceWithCB : IServiceWithCB, IMeasure, IReport
 	{
 		private List<Subscriber> subscribers = new List<Subscriber>();
 		private Dictionary<string, double> measurements = new Dictionary<string, double>();
@@ -53,12 +53,14 @@ namespace Service
 
 			subscriber = subscribers.Find(s => s.ClientId == clientId);
 
-			if(subscribers == null)
+			if(subscriber == null)
 			{
 				subscriber = new Subscriber(clientId,
 					OperationContext.Current.GetCallbackChannel<IServiceWithCBCallback>(),
 					new List<int> {rtuId }
 					);
+
+				subscribers.Add(subscriber);
 
 				return;
 			}
@@ -83,6 +85,26 @@ namespace Service
 			}
 
 			subscriber.Rtus.Remove(rtuId);
+		}
+
+		public string GetReportRTU(int id, DateTime start, DateTime end)
+		{
+			throw new NotImplementedException();
+		}
+
+		public string GetReportTime(double value)
+		{
+			throw new NotImplementedException();
+		}
+
+		public string AverageReport(int location)
+		{
+			throw new NotImplementedException();
+		}
+
+		public string GetReportTimeLocation(double value)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

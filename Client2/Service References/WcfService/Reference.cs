@@ -15,18 +15,24 @@ namespace Client2.WcfService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IServiceWithCB", CallbackContract=typeof(Client2.WcfService.IServiceWithCBCallback))]
     public interface IServiceWithCB {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Start", ReplyAction="http://tempuri.org/IServiceWithCB/StartResponse")]
-        string Start();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Subscribe", ReplyAction="http://tempuri.org/IServiceWithCB/SubscribeResponse")]
+        void Subscribe(int clientId, int rtuId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Start", ReplyAction="http://tempuri.org/IServiceWithCB/StartResponse")]
-        System.Threading.Tasks.Task<string> StartAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Subscribe", ReplyAction="http://tempuri.org/IServiceWithCB/SubscribeResponse")]
+        System.Threading.Tasks.Task SubscribeAsync(int clientId, int rtuId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Unsubscribe", ReplyAction="http://tempuri.org/IServiceWithCB/UnsubscribeResponse")]
+        void Unsubscribe(int clientId, int rtuId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Unsubscribe", ReplyAction="http://tempuri.org/IServiceWithCB/UnsubscribeResponse")]
+        System.Threading.Tasks.Task UnsubscribeAsync(int clientId, int rtuId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IServiceWithCBCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/OnCallback", ReplyAction="http://tempuri.org/IServiceWithCB/OnCallbackResponse")]
-        void OnCallback(string id, double value);
+        void OnCallback(int id, double value, System.DateTime date, int type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -57,12 +63,20 @@ namespace Client2.WcfService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public string Start() {
-            return base.Channel.Start();
+        public void Subscribe(int clientId, int rtuId) {
+            base.Channel.Subscribe(clientId, rtuId);
         }
         
-        public System.Threading.Tasks.Task<string> StartAsync() {
-            return base.Channel.StartAsync();
+        public System.Threading.Tasks.Task SubscribeAsync(int clientId, int rtuId) {
+            return base.Channel.SubscribeAsync(clientId, rtuId);
+        }
+        
+        public void Unsubscribe(int clientId, int rtuId) {
+            base.Channel.Unsubscribe(clientId, rtuId);
+        }
+        
+        public System.Threading.Tasks.Task UnsubscribeAsync(int clientId, int rtuId) {
+            return base.Channel.UnsubscribeAsync(clientId, rtuId);
         }
     }
     
@@ -110,6 +124,95 @@ namespace Client2.WcfService {
         
         public System.Threading.Tasks.Task MeasureAsync(int rtuId, double value, System.DateTime time, int type) {
             return base.Channel.MeasureAsync(rtuId, value, time, type);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IReport")]
+    public interface IReport {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportRTU", ReplyAction="http://tempuri.org/IReport/GetReportRTUResponse")]
+        string GetReportRTU(int id, System.DateTime start, System.DateTime end);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportRTU", ReplyAction="http://tempuri.org/IReport/GetReportRTUResponse")]
+        System.Threading.Tasks.Task<string> GetReportRTUAsync(int id, System.DateTime start, System.DateTime end);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTime", ReplyAction="http://tempuri.org/IReport/GetReportTimeResponse")]
+        string GetReportTime(double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTime", ReplyAction="http://tempuri.org/IReport/GetReportTimeResponse")]
+        System.Threading.Tasks.Task<string> GetReportTimeAsync(double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/AverageReport", ReplyAction="http://tempuri.org/IReport/AverageReportResponse")]
+        string AverageReport(int location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/AverageReport", ReplyAction="http://tempuri.org/IReport/AverageReportResponse")]
+        System.Threading.Tasks.Task<string> AverageReportAsync(int location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTimeLocation", ReplyAction="http://tempuri.org/IReport/GetReportTimeLocationResponse")]
+        string GetReportTimeLocation(double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTimeLocation", ReplyAction="http://tempuri.org/IReport/GetReportTimeLocationResponse")]
+        System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(double value);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IReportChannel : Client2.WcfService.IReport, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ReportClient : System.ServiceModel.ClientBase<Client2.WcfService.IReport>, Client2.WcfService.IReport {
+        
+        public ReportClient() {
+        }
+        
+        public ReportClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ReportClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReportClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReportClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public string GetReportRTU(int id, System.DateTime start, System.DateTime end) {
+            return base.Channel.GetReportRTU(id, start, end);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetReportRTUAsync(int id, System.DateTime start, System.DateTime end) {
+            return base.Channel.GetReportRTUAsync(id, start, end);
+        }
+        
+        public string GetReportTime(double value) {
+            return base.Channel.GetReportTime(value);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetReportTimeAsync(double value) {
+            return base.Channel.GetReportTimeAsync(value);
+        }
+        
+        public string AverageReport(int location) {
+            return base.Channel.AverageReport(location);
+        }
+        
+        public System.Threading.Tasks.Task<string> AverageReportAsync(int location) {
+            return base.Channel.AverageReportAsync(location);
+        }
+        
+        public string GetReportTimeLocation(double value) {
+            return base.Channel.GetReportTimeLocation(value);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(double value) {
+            return base.Channel.GetReportTimeLocationAsync(value);
         }
     }
 }

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMeasure.cs" />
+    <Compile Include="IReport.cs" />
     <Compile Include="IServiceWithCBCallback.cs" />
     <Compile Include="IServiceWithCB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -58,7 +58,7 @@ namespace RTUManager
 
 		public bool CanStartCommandExecute()
 		{
-			return selectedRTU != null && !selectedRTU.isStarter();
+			return selectedRTU != null && !selectedRTU.IsStarter();
 		}
 
 		public void StopCommandExecute()
@@ -68,7 +68,7 @@ namespace RTUManager
 
 		public bool CanStopCommandExecute()
 		{
-			return selectedRTU != null && selectedRTU.isStarter();
+			return selectedRTU != null && selectedRTU.IsStarter();
 		}
 	}
 }

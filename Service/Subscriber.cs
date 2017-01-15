@@ -14,6 +14,7 @@ namespace Service
 
 		public Subscriber(int clientId, IServiceWithCBCallback callback, List<int> rtus)
 		{
+			this.clientId = clientId;
 			this.callback = callback;
 			this.rtus = rtus;
 		}

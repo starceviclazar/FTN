@@ -8,18 +8,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Client.WcfService {
+namespace RTUViewer.WcfService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IServiceWithCB", CallbackContract=typeof(Client.WcfService.IServiceWithCBCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IServiceWithCB", CallbackContract=typeof(RTUViewer.WcfService.IServiceWithCBCallback))]
     public interface IServiceWithCB {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Subscribe", ReplyAction="http://tempuri.org/IServiceWithCB/SubscribeResponse")]
         void Subscribe(int clientId, int rtuId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Subscribe", ReplyAction="http://tempuri.org/IServiceWithCB/SubscribeResponse")]
+        System.Threading.Tasks.Task SubscribeAsync(int clientId, int rtuId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Unsubscribe", ReplyAction="http://tempuri.org/IServiceWithCB/UnsubscribeResponse")]
         void Unsubscribe(int clientId, int rtuId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWithCB/Unsubscribe", ReplyAction="http://tempuri.org/IServiceWithCB/UnsubscribeResponse")]
+        System.Threading.Tasks.Task UnsubscribeAsync(int clientId, int rtuId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -30,12 +36,12 @@ namespace Client.WcfService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceWithCBChannel : Client.WcfService.IServiceWithCB, System.ServiceModel.IClientChannel {
+    public interface IServiceWithCBChannel : RTUViewer.WcfService.IServiceWithCB, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceWithCBClient : System.ServiceModel.DuplexClientBase<Client.WcfService.IServiceWithCB>, Client.WcfService.IServiceWithCB {
+    public partial class ServiceWithCBClient : System.ServiceModel.DuplexClientBase<RTUViewer.WcfService.IServiceWithCB>, RTUViewer.WcfService.IServiceWithCB {
         
         public ServiceWithCBClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -61,8 +67,16 @@ namespace Client.WcfService {
             base.Channel.Subscribe(clientId, rtuId);
         }
         
+        public System.Threading.Tasks.Task SubscribeAsync(int clientId, int rtuId) {
+            return base.Channel.SubscribeAsync(clientId, rtuId);
+        }
+        
         public void Unsubscribe(int clientId, int rtuId) {
             base.Channel.Unsubscribe(clientId, rtuId);
+        }
+        
+        public System.Threading.Tasks.Task UnsubscribeAsync(int clientId, int rtuId) {
+            return base.Channel.UnsubscribeAsync(clientId, rtuId);
         }
     }
     
@@ -72,15 +86,18 @@ namespace Client.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMeasure/Measure", ReplyAction="http://tempuri.org/IMeasure/MeasureResponse")]
         void Measure(int rtuId, double value, System.DateTime time, int type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMeasure/Measure", ReplyAction="http://tempuri.org/IMeasure/MeasureResponse")]
+        System.Threading.Tasks.Task MeasureAsync(int rtuId, double value, System.DateTime time, int type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMeasureChannel : Client.WcfService.IMeasure, System.ServiceModel.IClientChannel {
+    public interface IMeasureChannel : RTUViewer.WcfService.IMeasure, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MeasureClient : System.ServiceModel.ClientBase<Client.WcfService.IMeasure>, Client.WcfService.IMeasure {
+    public partial class MeasureClient : System.ServiceModel.ClientBase<RTUViewer.WcfService.IMeasure>, RTUViewer.WcfService.IMeasure {
         
         public MeasureClient() {
         }
@@ -104,6 +121,10 @@ namespace Client.WcfService {
         public void Measure(int rtuId, double value, System.DateTime time, int type) {
             base.Channel.Measure(rtuId, value, time, type);
         }
+        
+        public System.Threading.Tasks.Task MeasureAsync(int rtuId, double value, System.DateTime time, int type) {
+            return base.Channel.MeasureAsync(rtuId, value, time, type);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -113,23 +134,35 @@ namespace Client.WcfService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportRTU", ReplyAction="http://tempuri.org/IReport/GetReportRTUResponse")]
         string GetReportRTU(int id, System.DateTime start, System.DateTime end);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportRTU", ReplyAction="http://tempuri.org/IReport/GetReportRTUResponse")]
+        System.Threading.Tasks.Task<string> GetReportRTUAsync(int id, System.DateTime start, System.DateTime end);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTime", ReplyAction="http://tempuri.org/IReport/GetReportTimeResponse")]
         string GetReportTime(double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTime", ReplyAction="http://tempuri.org/IReport/GetReportTimeResponse")]
+        System.Threading.Tasks.Task<string> GetReportTimeAsync(double value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/AverageReport", ReplyAction="http://tempuri.org/IReport/AverageReportResponse")]
         string AverageReport(int location);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/AverageReport", ReplyAction="http://tempuri.org/IReport/AverageReportResponse")]
+        System.Threading.Tasks.Task<string> AverageReportAsync(int location);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTimeLocation", ReplyAction="http://tempuri.org/IReport/GetReportTimeLocationResponse")]
         string GetReportTimeLocation(double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTimeLocation", ReplyAction="http://tempuri.org/IReport/GetReportTimeLocationResponse")]
+        System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(double value);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IReportChannel : Client.WcfService.IReport, System.ServiceModel.IClientChannel {
+    public interface IReportChannel : RTUViewer.WcfService.IReport, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ReportClient : System.ServiceModel.ClientBase<Client.WcfService.IReport>, Client.WcfService.IReport {
+    public partial class ReportClient : System.ServiceModel.ClientBase<RTUViewer.WcfService.IReport>, RTUViewer.WcfService.IReport {
         
         public ReportClient() {
         }
@@ -154,16 +187,32 @@ namespace Client.WcfService {
             return base.Channel.GetReportRTU(id, start, end);
         }
         
+        public System.Threading.Tasks.Task<string> GetReportRTUAsync(int id, System.DateTime start, System.DateTime end) {
+            return base.Channel.GetReportRTUAsync(id, start, end);
+        }
+        
         public string GetReportTime(double value) {
             return base.Channel.GetReportTime(value);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetReportTimeAsync(double value) {
+            return base.Channel.GetReportTimeAsync(value);
         }
         
         public string AverageReport(int location) {
             return base.Channel.AverageReport(location);
         }
         
+        public System.Threading.Tasks.Task<string> AverageReportAsync(int location) {
+            return base.Channel.AverageReportAsync(location);
+        }
+        
         public string GetReportTimeLocation(double value) {
             return base.Channel.GetReportTimeLocation(value);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(double value) {
+            return base.Channel.GetReportTimeLocationAsync(value);
         }
     }
 }

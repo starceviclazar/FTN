@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTUManager", "RTUManager\RTUManager.csproj", "{12E34FE6-CAF6-4848-BAF6-62EA946A0647}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTUViewer", "RTUViewer\RTUViewer.csproj", "{5BC9C3C9-7A38-43B4-BB08-59F54505E730}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D880807-1CBA-403C-A339-619A9756CDDB} = {4D880807-1CBA-403C-A339-619A9756CDDB}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +84,16 @@ Global
 		{12E34FE6-CAF6-4848-BAF6-62EA946A0647}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{12E34FE6-CAF6-4848-BAF6-62EA946A0647}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{12E34FE6-CAF6-4848-BAF6-62EA946A0647}.Release|x86.ActiveCfg = Release|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

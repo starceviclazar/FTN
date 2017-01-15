@@ -82,7 +82,7 @@ namespace Client2
 			collect = false;
 		}
 
-		public bool isStarter()
+		public bool IsStarter()
 		{
 			return collect;
 		}
