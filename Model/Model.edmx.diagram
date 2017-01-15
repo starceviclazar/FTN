@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="784a63d86471447e847663835c4a1b08" Name="Diagram1">
+      <Diagram DiagramId="4a0106a5fe424b6a829928c057ddeda4" Name="Diagram1">
         <EntityTypeShape EntityType="FTNModel.LOCATION" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="FTNModel.MEASUREMENT" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FTNModel.RTU" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FTNModel.RTU" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="FTNModel.FK_RTU_RTU_TO_LO_LOCATION" ManuallyRouted="false" />
         <AssociationConnector Association="FTNModel.FK_MEASUREM_RTU_TO_ME_RTU" ManuallyRouted="false" />
       </Diagram>

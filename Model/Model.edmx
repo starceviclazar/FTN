@@ -31,6 +31,7 @@
           <Property Name="RTU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LOCATION_ID" Type="int" Nullable="false" />
           <Property Name="NAME" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RTU_TYPE" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_MEASUREM_RTU_TO_ME_RTU">
           <End Role="RTU" Type="Self.RTU" Multiplicity="1" />
@@ -102,6 +103,7 @@
           <Property Name="RTU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
           <Property Name="NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RTU_TYPE" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LOCATION" Relationship="Self.FK_RTU_RTU_TO_LO_LOCATION" FromRole="RTU" ToRole="LOCATION" />
           <NavigationProperty Name="MEASUREMENTs" Relationship="Self.FK_MEASUREM_RTU_TO_ME_RTU" FromRole="RTU" ToRole="MEASUREMENT" />
         </EntityType>
@@ -129,7 +131,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FTNEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
           <EntitySet Name="MEASUREMENTs" EntityType="Self.MEASUREMENT" />
           <EntitySet Name="RTUs" EntityType="Self.RTU" />
@@ -147,7 +149,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FTNModelStoreContainer" CdmEntityContainer="FTNEntities">
+        <EntityContainerMapping StorageEntityContainer="FTNModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="LOCATIONs">
             <EntityTypeMapping TypeName="FTNModel.LOCATION">
               <MappingFragment StoreEntitySet="LOCATION">
@@ -175,6 +177,7 @@
                 <ScalarProperty Name="RTU_ID" ColumnName="RTU_ID" />
                 <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="RTU_TYPE" ColumnName="RTU_TYPE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

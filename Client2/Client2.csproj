@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RTU.cs" />
     <Compile Include="Service References\WcfService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -52,7 +53,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Service References\App.config" />
     <None Include="Service References\WcfService\service.wsdl" />
     <None Include="Service References\WcfService\service.xsd">
       <SubType>Designer</SubType>

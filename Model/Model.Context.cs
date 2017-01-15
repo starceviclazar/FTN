@@ -13,10 +13,10 @@ namespace Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FTNEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public FTNEntities()
-            : base("name=FTNEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -28,5 +28,5 @@ namespace Model
         public virtual DbSet<LOCATION> LOCATIONs { get; set; }
         public virtual DbSet<MEASUREMENT> MEASUREMENTs { get; set; }
         public virtual DbSet<RTU> RTUs { get; set; }
-	}
+    }
 }

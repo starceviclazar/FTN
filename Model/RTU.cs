@@ -22,6 +22,7 @@ namespace Model
         public int RTU_ID { get; set; }
         public int LOCATION_ID { get; set; }
         public string NAME { get; set; }
+        public int RTU_TYPE { get; set; }
     
         public virtual LOCATION LOCATION { get; set; }
         public virtual ICollection<MEASUREMENT> MEASUREMENTs { get; set; }

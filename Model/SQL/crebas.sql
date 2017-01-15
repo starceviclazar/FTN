@@ -97,6 +97,7 @@ create table RTU (
    RTU_ID               int    IDENTITY(1,1)              not null,
    LOCATION_ID          int                  not null,
    NAME                 varchar(200)         not null,
+   RTU_TYPE                 int                  not null,
    constraint PK_RTU primary key nonclustered (RTU_ID)
 )
 go
