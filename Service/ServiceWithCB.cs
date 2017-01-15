@@ -22,7 +22,7 @@ namespace Service
 
 		public void Measure(int rtuId, double value, DateTime time, int type)
 		{
-			FTNEntities db = new FTNEntities();
+			Entities db = new Entities();
 
 			MEASUREMENT m = new MEASUREMENT();
 			m.MEASUREMENT_TIME = DateTime.Now;
