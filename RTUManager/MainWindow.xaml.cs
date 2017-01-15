@@ -23,6 +23,7 @@ namespace RTUManager
 		public MainWindow()
 		{
 			InitializeComponent();
+			DataContext = new RTUManagerViewModel();
 		}
 	}
 }

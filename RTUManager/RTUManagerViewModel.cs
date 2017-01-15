@@ -22,12 +22,28 @@ namespace RTUManager
 
 		public RelayCommand StartCommand
 		{
-			get { return startCommand ?? (new RelayCommand(p => StartCommandExecute(), p => CanStartCommandExecute())); }
+			get { return startCommand ?? (new RTUManager.RelayCommand(p => StartCommandExecute(), p => CanStartCommandExecute())); }
 		}
 
 		public RelayCommand StopCommand
 		{
-			get { return stopCommand ?? (new RelayCommand(p => StopCommandExecute(), p => CanStopCommandExecute())); }
+			get { return stopCommand ?? (new RTUManager.RelayCommand(p => StopCommandExecute(), p => CanStopCommandExecute())); }
+		}
+
+		public ObservableCollection<RTU> Rtus
+		{
+			get { return rtus; }
+			set { rtus = value; }
+		}
+
+		public RTU SelectedRTU
+		{
+			get { return selectedRTU; }
+			set
+			{
+				selectedRTU = value;
+				OnPropertyChanged("SelectedRTU");
+			}
 		}
 
 		public void StartCommandExecute()

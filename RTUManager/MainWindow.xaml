@@ -8,12 +8,12 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0">
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Rtus}" SelectedItem="{Binding SelectedRTU}">
             
         </DataGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Start" Width="100" Margin="5"/>
-            <Button Content="Stop" Width="100" Margin="5"/>
+            <Button Content="Start" Width="100" Margin="5" Command="{Binding StartCommand}"/>
+            <Button Content="Stop" Width="100" Margin="5" Command="{Binding StopCommand}"/>
         </StackPanel>
         
     </Grid>
