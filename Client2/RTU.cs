@@ -81,5 +81,10 @@ namespace Client2
 		{
 			collect = false;
 		}
+
+		public bool isStarter()
+		{
+			return collect;
+		}
 	}
 }
