@@ -53,6 +53,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <None Include="Service References\App.config" />
     <None Include="Service References\WcfService\service.wsdl" />
     <None Include="Service References\WcfService\service.xsd">

@@ -25,6 +25,7 @@ namespace Client2
 			this.id = id;
 			this.name = name;
 			this.type = type;
+			var t = Task.Run(() => Do());
 		}
 
 		public string Name
@@ -35,13 +36,13 @@ namespace Client2
 
 		public void Do()
 		{
-			if(!collect)
-			{
-				return;
-			}
-
 			while (true)
 			{
+				if (!collect)
+				{
+					continue;
+				}
+
 				double value;
 
 				lock (syncLock)

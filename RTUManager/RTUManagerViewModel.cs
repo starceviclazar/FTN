@@ -5,19 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Client2;
+using Model;
 
 namespace RTUManager
 {
 	public class RTUManagerViewModel : ViewModelBase
 	{
-		private ObservableCollection<RTU> rtus;
-		private RTU selectedRTU = null;
+		private ObservableCollection<Client2.RTU> rtus;
+		private Client2.RTU selectedRTU = null;
 		private RelayCommand startCommand;
 		private RelayCommand stopCommand;
 
 		public RTUManagerViewModel()
 		{
-			rtus = new ObservableCollection<RTU>();
+			rtus = new ObservableCollection<Client2.RTU>();
+			foreach (Model.RTU rtu in EntityManager.getRTUs())
+			{
+				rtus.Add(new Client2.RTU(rtu.RTU_ID, rtu.NAME, rtu.RTU_TYPE));
+			}
 		}
 
 		public RelayCommand StartCommand
@@ -30,13 +35,13 @@ namespace RTUManager
 			get { return stopCommand ?? (new RTUManager.RelayCommand(p => StopCommandExecute(), p => CanStopCommandExecute())); }
 		}
 
-		public ObservableCollection<RTU> Rtus
+		public ObservableCollection<Client2.RTU> Rtus
 		{
 			get { return rtus; }
 			set { rtus = value; }
 		}
 
-		public RTU SelectedRTU
+		public Client2.RTU SelectedRTU
 		{
 			get { return selectedRTU; }
 			set
