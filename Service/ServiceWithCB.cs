@@ -87,6 +87,11 @@ namespace Service
 			subscriber.Rtus.Remove(rtuId);
 		}
 
+		public string GetReportAll(DateTime start, DateTime end)
+		{
+			throw new NotImplementedException();
+		}
+
 		public string GetReportRTU(int id, DateTime start, DateTime end)
 		{
 			throw new NotImplementedException();
@@ -102,7 +107,7 @@ namespace Service
 			throw new NotImplementedException();
 		}
 
-		public string GetReportTimeLocation(double value)
+		public string GetReportTimeLocation(int id, double value)
 		{
 			throw new NotImplementedException();
 		}

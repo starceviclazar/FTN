@@ -37,6 +37,12 @@ namespace RTUViewer
 			set { name = value; }
 		}
 
+		public int ID
+		{
+			get { return id; }
+			set { id = value; }
+		}
+
 		public string Status
 		{
 			get

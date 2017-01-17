@@ -11,6 +11,9 @@ namespace Service
 	public interface IReport
 	{
 		[OperationContract]
+		string GetReportAll(DateTime start, DateTime end);
+
+		[OperationContract]
 		string GetReportRTU(int id, DateTime start, DateTime end);
 
 		[OperationContract]
@@ -20,6 +23,6 @@ namespace Service
 		string AverageReport(int location);
 
 		[OperationContract]
-		string GetReportTimeLocation(double value);
+		string GetReportTimeLocation(int id, double value);
 	}
 }
