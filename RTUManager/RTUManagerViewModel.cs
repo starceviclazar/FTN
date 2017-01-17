@@ -27,12 +27,12 @@ namespace RTUManager
 
 		public RelayCommand StartCommand
 		{
-			get { return startCommand ?? (new RTUManager.RelayCommand(p => StartCommandExecute(), p => CanStartCommandExecute())); }
+			get { return startCommand ?? (startCommand = new RTUManager.RelayCommand(p => StartCommandExecute(), p => CanStartCommandExecute())); }
 		}
 
 		public RelayCommand StopCommand
 		{
-			get { return stopCommand ?? (new RTUManager.RelayCommand(p => StopCommandExecute(), p => CanStopCommandExecute())); }
+			get { return stopCommand ?? (stopCommand = new RTUManager.RelayCommand(p => StopCommandExecute(), p => CanStopCommandExecute())); }
 		}
 
 		public ObservableCollection<Client2.RTU> Rtus

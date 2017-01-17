@@ -17,6 +17,15 @@ namespace Model
 			}
 		}
 
+		public static List<LOCATION> getLocations()
+		{
+			using (Entities db = new Entities())
+			{
+				var query = from r in db.LOCATIONs select r;
+				return query.ToList();
+			}
+		}
+
 
 	}
 }
