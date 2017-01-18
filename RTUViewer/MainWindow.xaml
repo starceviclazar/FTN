@@ -21,13 +21,13 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Label Content="Start: " Margin="5"></Label>
-            <wpfTool:DateTimePicker Value="{Binding StartDate}" Margin="5"/>
+            <wpfTool:DateTimePicker Value="{Binding StartDate}" Margin="5" IsEnabled="{Binding IsDateEnabled}"/>
             <Label Content="End: " Margin="5"></Label>
-            <wpfTool:DateTimePicker Value="{Binding EndDate}" Margin="5"/>
+            <wpfTool:DateTimePicker Value="{Binding EndDate}" Margin="5" IsEnabled="{Binding IsDateEnabled}"/>
             <Label Content="Value: " Margin="5"></Label>
-            <TextBox Width="100" Text="{Binding Value}" Margin="5"></TextBox>
+            <TextBox Width="100" Text="{Binding Value}" Margin="5" IsEnabled="{Binding IsValueEnabled}"></TextBox>
             <Label Content="Location: " Margin="5"></Label>
-            <ComboBox Width="60" ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedLocation}" Margin="5"/>
+            <ComboBox Width="60" ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedLocation}" Margin="5" IsEnabled="{Binding IsLocationEnabled}"/>
             <ComboBox SelectedIndex="{Binding SelectedReport}" Margin="5">
                 <ComboBoxItem Content="A"/>
                 <ComboBoxItem Content="B"/>

@@ -89,27 +89,27 @@ namespace Service
 
 		public string GetReportAll(DateTime start, DateTime end)
 		{
-			throw new NotImplementedException();
+			return EntityManager.GetReportAll(start, end);
 		}
 
 		public string GetReportRTU(int id, DateTime start, DateTime end)
 		{
-			throw new NotImplementedException();
+			return EntityManager.GetReportRTU(id, start, end);
 		}
 
 		public string GetReportTime(double value)
 		{
-			throw new NotImplementedException();
+			return EntityManager.GetReportTime(value);
 		}
 
-		public string AverageReport(int location)
+		public string AverageReport(int location, DateTime start, DateTime end)
 		{
-			throw new NotImplementedException();
+			return EntityManager.AverageReport(location, start, end);
 		}
 
 		public string GetReportTimeLocation(int id, double value)
 		{
-			throw new NotImplementedException();
+			return EntityManager.GetReportTimeLocation(id, value);
 		}
 	}
 }

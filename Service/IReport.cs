@@ -20,7 +20,7 @@ namespace Service
 		string GetReportTime(double value);
 
 		[OperationContract]
-		string AverageReport(int location);
+		string AverageReport(int location, DateTime start, DateTime end);
 
 		[OperationContract]
 		string GetReportTimeLocation(int id, double value);

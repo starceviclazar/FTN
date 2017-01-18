@@ -25,8 +25,13 @@ namespace RTUViewer
 		private DateTime endDate = DateTime.Now;
 		private double value;
 
+		private bool isDateEnabled = true;
+		private bool isValueEnabled = true;
+		private bool isLocationEnabled = true;
+
 		public RTUViewerViewModel(RichTextBox console)
 		{
+			//SelectedReport = 0;
 			this.console = console;
 			rtus = new ObservableCollection<RTUModel>();
 			locations = new ObservableCollection<int>();
@@ -54,6 +59,36 @@ namespace RTUViewer
 		public RelayCommand ShowReportCommand
 		{
 			get { return showReportCommand ?? (showReportCommand = new RelayCommand(p => ShowReportCommandExecute(), p => CanShowReportCommandExecute())); }
+		}
+
+		public bool IsDateEnabled
+		{
+			get { return isDateEnabled; }
+			set
+			{
+				isDateEnabled = value;
+				OnPropertyChanged("IsDateEnabled");
+			}
+		}
+
+		public bool IsValueEnabled
+		{
+			get { return isValueEnabled; }
+			set
+			{
+				isValueEnabled = value;
+				OnPropertyChanged("IsValueEnabled");
+			}
+		}
+
+		public bool IsLocationEnabled
+		{
+			get { return isLocationEnabled; }
+			set
+			{
+				isLocationEnabled = value;
+				OnPropertyChanged("IsLocationEnabled");
+			}
 		}
 
 		public double Value
@@ -104,6 +139,7 @@ namespace RTUViewer
 			set
 			{
 				selectedReport = value;
+				Refres();
 				OnPropertyChanged("SelectedReport");
 			}
 		}
@@ -151,20 +187,58 @@ namespace RTUViewer
 		public void ShowReportCommandExecute()
 		{
 			ReportClient client = new ReportClient();
+			string report = string.Empty;
 
 			switch(SelectedReport)
 			{
-				case 0: client.GetReportAll(startDate, endDate); break;
-				case 1: client.GetReportRTU(selectedRTU.ID, startDate, endDate); break;
-				case 3: client.AverageReport(SelectedLocation); break;
-				case 4: client.GetReportTime(Value); break;
-				case 5: client.GetReportTimeLocation(SelectedLocation, Value); break;
+				case 0: report = client.GetReportAll(startDate, endDate); break;
+				case 1: report = client.GetReportRTU(selectedRTU.ID, startDate, endDate); break;
+				case 2: report = client.GetReportTime(Value); break;
+				case 3: report = client.AverageReport(SelectedLocation, startDate, endDate); break;
+				case 4: report = client.GetReportTimeLocation(SelectedLocation, Value); break;
 			}
+
+			ReportView view = new ReportView(report);
+			view.ShowDialog();
 		}
 
 		public bool CanShowReportCommandExecute()
 		{
+			if(SelectedReport != 1)
+			{
+				return true;
+			}
+
 			return selectedRTU != null;
+			
+		}
+
+		public void Refres()
+		{
+			if (SelectedReport == 0 || SelectedReport == 1)
+			{
+				IsDateEnabled = true;
+				IsValueEnabled = false;
+				IsLocationEnabled = false;
+			}
+			else if(SelectedReport == 2)
+			{
+				IsDateEnabled = false;
+				IsValueEnabled = true;
+				IsLocationEnabled = false;
+			}
+			else if (SelectedReport == 3)
+			{
+				IsDateEnabled = true;
+				IsValueEnabled = false;
+				IsLocationEnabled = true;
+			}
+			else if (SelectedReport == 4)
+			{
+				IsDateEnabled = false;
+				IsValueEnabled = true;
+				IsLocationEnabled = true;
+			}
 		}
 	}
 }

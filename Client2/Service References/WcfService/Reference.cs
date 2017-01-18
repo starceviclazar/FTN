@@ -131,6 +131,12 @@ namespace Client2.WcfService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IReport")]
     public interface IReport {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportAll", ReplyAction="http://tempuri.org/IReport/GetReportAllResponse")]
+        string GetReportAll(System.DateTime start, System.DateTime end);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportAll", ReplyAction="http://tempuri.org/IReport/GetReportAllResponse")]
+        System.Threading.Tasks.Task<string> GetReportAllAsync(System.DateTime start, System.DateTime end);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportRTU", ReplyAction="http://tempuri.org/IReport/GetReportRTUResponse")]
         string GetReportRTU(int id, System.DateTime start, System.DateTime end);
         
@@ -150,10 +156,10 @@ namespace Client2.WcfService {
         System.Threading.Tasks.Task<string> AverageReportAsync(int location);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTimeLocation", ReplyAction="http://tempuri.org/IReport/GetReportTimeLocationResponse")]
-        string GetReportTimeLocation(double value);
+        string GetReportTimeLocation(int id, double value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTimeLocation", ReplyAction="http://tempuri.org/IReport/GetReportTimeLocationResponse")]
-        System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(double value);
+        System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(int id, double value);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -183,6 +189,14 @@ namespace Client2.WcfService {
                 base(binding, remoteAddress) {
         }
         
+        public string GetReportAll(System.DateTime start, System.DateTime end) {
+            return base.Channel.GetReportAll(start, end);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetReportAllAsync(System.DateTime start, System.DateTime end) {
+            return base.Channel.GetReportAllAsync(start, end);
+        }
+        
         public string GetReportRTU(int id, System.DateTime start, System.DateTime end) {
             return base.Channel.GetReportRTU(id, start, end);
         }
@@ -207,12 +221,12 @@ namespace Client2.WcfService {
             return base.Channel.AverageReportAsync(location);
         }
         
-        public string GetReportTimeLocation(double value) {
-            return base.Channel.GetReportTimeLocation(value);
+        public string GetReportTimeLocation(int id, double value) {
+            return base.Channel.GetReportTimeLocation(id, value);
         }
         
-        public System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(double value) {
-            return base.Channel.GetReportTimeLocationAsync(value);
+        public System.Threading.Tasks.Task<string> GetReportTimeLocationAsync(int id, double value) {
+            return base.Channel.GetReportTimeLocationAsync(id, value);
         }
     }
 }

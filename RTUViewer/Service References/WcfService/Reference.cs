@@ -150,10 +150,10 @@ namespace RTUViewer.WcfService {
         System.Threading.Tasks.Task<string> GetReportTimeAsync(double value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/AverageReport", ReplyAction="http://tempuri.org/IReport/AverageReportResponse")]
-        string AverageReport(int location);
+        string AverageReport(int location, System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/AverageReport", ReplyAction="http://tempuri.org/IReport/AverageReportResponse")]
-        System.Threading.Tasks.Task<string> AverageReportAsync(int location);
+        System.Threading.Tasks.Task<string> AverageReportAsync(int location, System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReport/GetReportTimeLocation", ReplyAction="http://tempuri.org/IReport/GetReportTimeLocationResponse")]
         string GetReportTimeLocation(int id, double value);
@@ -213,12 +213,12 @@ namespace RTUViewer.WcfService {
             return base.Channel.GetReportTimeAsync(value);
         }
         
-        public string AverageReport(int location) {
-            return base.Channel.AverageReport(location);
+        public string AverageReport(int location, System.DateTime start, System.DateTime end) {
+            return base.Channel.AverageReport(location, start, end);
         }
         
-        public System.Threading.Tasks.Task<string> AverageReportAsync(int location) {
-            return base.Channel.AverageReportAsync(location);
+        public System.Threading.Tasks.Task<string> AverageReportAsync(int location, System.DateTime start, System.DateTime end) {
+            return base.Channel.AverageReportAsync(location, start, end);
         }
         
         public string GetReportTimeLocation(int id, double value) {
