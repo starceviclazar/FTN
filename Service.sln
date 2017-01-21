@@ -5,12 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{4D880807-1CBA-403C-A339-619A9756CDDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4D880807-1CBA-403C-A339-619A9756CDDB} = {4D880807-1CBA-403C-A339-619A9756CDDB}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client2", "Client2\Client2.csproj", "{5E645CC0-9D33-4E71-ACFA-E06C815A1252}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Measurement", "Client2\Measurement.csproj", "{5E645CC0-9D33-4E71-ACFA-E06C815A1252}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4D880807-1CBA-403C-A339-619A9756CDDB} = {4D880807-1CBA-403C-A339-619A9756CDDB}
 	EndProjectSection
@@ -44,16 +39,6 @@ Global
 		{4D880807-1CBA-403C-A339-619A9756CDDB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4D880807-1CBA-403C-A339-619A9756CDDB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4D880807-1CBA-403C-A339-619A9756CDDB}.Release|x86.ActiveCfg = Release|Any CPU
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Debug|x86.ActiveCfg = Debug|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Debug|x86.Build.0 = Debug|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Release|Any CPU.ActiveCfg = Release|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Release|Mixed Platforms.Build.0 = Release|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Release|x86.ActiveCfg = Release|x86
-		{EAC5E767-28E5-4A24-A030-2EAC65FAE43B}.Release|x86.Build.0 = Release|x86
 		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

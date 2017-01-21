@@ -107,9 +107,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Client2\Client2.csproj">
+    <ProjectReference Include="..\Client2\Measurement.csproj">
       <Project>{5e645cc0-9d33-4e71-acfa-e06c815a1252}</Project>
-      <Name>Client2</Name>
+      <Name>Measurement</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{4e1af7a1-2d29-419c-9784-67cdc9932ac9}</Project>
