@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Client2
+namespace Measurement
 {
 	public class RTU
 	{

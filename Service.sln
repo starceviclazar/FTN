@@ -5,11 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{4D880807-1CBA-403C-A339-619A9756CDDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Measurement", "Client2\Measurement.csproj", "{5E645CC0-9D33-4E71-ACFA-E06C815A1252}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4D880807-1CBA-403C-A339-619A9756CDDB} = {4D880807-1CBA-403C-A339-619A9756CDDB}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{4E1AF7A1-2D29-419C-9784-67CDC9932AC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTUManager", "RTUManager\RTUManager.csproj", "{12E34FE6-CAF6-4848-BAF6-62EA946A0647}"
@@ -18,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTUViewer", "RTUViewer\RTUV
 	ProjectSection(ProjectDependencies) = postProject
 		{4D880807-1CBA-403C-A339-619A9756CDDB} = {4D880807-1CBA-403C-A339-619A9756CDDB}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Measurement", "Measurement\Measurement.csproj", "{5E645CC0-9D33-4E71-ACFA-E06C815A1252}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,16 +36,6 @@ Global
 		{4D880807-1CBA-403C-A339-619A9756CDDB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4D880807-1CBA-403C-A339-619A9756CDDB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4D880807-1CBA-403C-A339-619A9756CDDB}.Release|x86.ActiveCfg = Release|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|x86.ActiveCfg = Release|Any CPU
 		{4E1AF7A1-2D29-419C-9784-67CDC9932AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E1AF7A1-2D29-419C-9784-67CDC9932AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E1AF7A1-2D29-419C-9784-67CDC9932AC9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -79,6 +66,16 @@ Global
 		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5BC9C3C9-7A38-43B4-BB08-59F54505E730}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5E645CC0-9D33-4E71-ACFA-E06C815A1252}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

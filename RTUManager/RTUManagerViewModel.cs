@@ -11,17 +11,17 @@ namespace RTUManager
 {
 	public class RTUManagerViewModel : ViewModelBase
 	{
-		private ObservableCollection<Client2.RTU> rtus;
-		private Client2.RTU selectedRTU = null;
+		private ObservableCollection<Measurement.RTU> rtus;
+		private Measurement.RTU selectedRTU = null;
 		private RelayCommand startCommand;
 		private RelayCommand stopCommand;
 
 		public RTUManagerViewModel()
 		{
-			rtus = new ObservableCollection<Client2.RTU>();
+			rtus = new ObservableCollection<Measurement.RTU>();
 			foreach (Model.RTU rtu in EntityManager.getRTUs())
 			{
-				rtus.Add(new Client2.RTU(rtu.RTU_ID, rtu.NAME, rtu.RTU_TYPE));
+				rtus.Add(new Measurement.RTU(rtu.RTU_ID, rtu.NAME, rtu.RTU_TYPE));
 			}
 		}
 
@@ -35,13 +35,13 @@ namespace RTUManager
 			get { return stopCommand ?? (stopCommand = new RTUManager.RelayCommand(p => StopCommandExecute(), p => CanStopCommandExecute())); }
 		}
 
-		public ObservableCollection<Client2.RTU> Rtus
+		public ObservableCollection<Measurement.RTU> Rtus
 		{
 			get { return rtus; }
 			set { rtus = value; }
 		}
 
-		public Client2.RTU SelectedRTU
+		public Measurement.RTU SelectedRTU
 		{
 			get { return selectedRTU; }
 			set
